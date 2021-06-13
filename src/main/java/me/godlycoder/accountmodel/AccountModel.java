@@ -16,6 +16,7 @@ public class AccountModel extends JsonFile {
     private Accounts accounts;
 
     public AccountModel(File file) {
+        super(file);
         this.file = file;
         this.createOrLoad();
     }
@@ -46,18 +47,6 @@ public class AccountModel extends JsonFile {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public void createOrLoad() {
-        if (file.getParentFile() != null &&
-                file.getParentFile().exists()) {
-            boolean b = file.getParentFile().mkdir();
-        }
-        if (!file.exists()) {
-            create();
-        }
-        load();
     }
 
     public void add(Account account) {
